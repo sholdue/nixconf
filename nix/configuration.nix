@@ -65,15 +65,14 @@
   ############################################
   # X11 & DESKTOP
   services.xserver.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
+  #services.desktopManager.plasma6.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = ",";
-    options = "grp:alt_shift_toggle";
+ 
+  programs.hyprland = {
+	enable = true;
+	xwayland.enable = true;
   };
+	
   ############################################
   # SOME PROGRAMS (BECAUSE HOME-MANAGER DOESNT SUPPORT INSTALL IT LOCALY) shit...
   programs = {
@@ -84,6 +83,28 @@
   		localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 	};
   };
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts-cjk-sans
+      noto-fonts
+      noto-fonts-emoji
+      font-awesome
+      source-han-sans
+      open-sans
+      source-han-sans-japanese
+      source-han-serif-japanese
+      jetbrains-mono
+      siji
+    ];
+    enableDefaultPackages = true;
+    fontconfig.defaultFonts = {
+      serif = [ "Noto Serif" "Source Han Serif" ];
+      sansSerif = [ "Open Sans" "Source Han Sans" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
+
   ############################################
   # AUDIO
   hardware.pulseaudio.enable = true;
@@ -113,6 +134,7 @@
     ];
     packages = with pkgs; [
       home-manager
+      rofi-wayland
     ];
   };
   ############################################
@@ -128,6 +150,7 @@
     p7zip
     brightnessctl
     home-manager
+    blueman
   ];
   ############################################
   # SYSTEM VERSION

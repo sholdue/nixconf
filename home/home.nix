@@ -14,6 +14,8 @@
       telegram-desktop
       tealdeer
       trashy
+      hyprpaper
+      waybar
     ];
 
     shellAliases = {
