@@ -14,12 +14,17 @@
       firefox
       telegram-desktop
       kitty
+      tealdeer
+      trashy 
     ];
 
     shellAliases = {
       nixup = "nix flake update --flake /home/sholdue/nix";
       nixswitch = "sudo nixos-rebuild switch --flake /home/sholdue/nix#world";
       hms = "home-manager switch --flake /home/sholdue/nix/home#sholdue";
+      cleanup = "sudo nix-collect-garbage -d";
+      rm = "trash";
+      rmdir = "trash";
     };
   };
 
