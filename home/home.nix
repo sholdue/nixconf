@@ -30,6 +30,7 @@
 
   imports = [
       ./utils/fish.nix
+      ./utils/git.nix
   ];
   programs.fish.enable = true;
   programs.home-manager.enable = true;
