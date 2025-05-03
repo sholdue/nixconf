@@ -1,30 +1,31 @@
 {
   programs.git = {
     enable = true;
-    extraConfig = ''
-        [init]
-            defaultBranch = main
 
-        [url "https://github.com/"]
-            insteadOf = "gh:"
-            insteadOf = "github:"
+    extraConfig = {
+      init.defaultBranch = "master";
 
-        [user]
-            name = "sholdue"
-            email = "sholdue@gmail.com"
+      core.editor = "nixvim";
 
-        [url "https://github.com/"]
-            insteadOf = "gh:"
-            insteadOf = "github:"
+      push.default = "current";
 
-        [core]
-            editor = "nvim"
+      color.ui = true;
+      "color \"diff-highlight\"" = {
+        oldNormal = "red bold";
+        oldHighlight = "red bold";
+        newNormal = "green bold";
+        newHighlight = "green bold ul";
+      };
+      "color \"diff\"" = {
+        meta = "yellow";
+        frag = "magenta bold";
+        commit = "yellow bold";
+        old = "red bold";
+        new = "green bold";
+        whitespace = "red reverse";
+      };
 
-        [alias]
-            co = checkout
-            br = branch
-            cm = commit
-            st = status
-    '';
+      pull.rebase = false;
+    };
   };
 }

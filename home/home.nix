@@ -10,12 +10,10 @@
       neofetch
       htop
       yazi
-      git
       firefox
       telegram-desktop
-      kitty
       tealdeer
-      trashy 
+      trashy
     ];
 
     shellAliases = {
@@ -31,6 +29,7 @@
   imports = [
       ./utils/fish.nix
       ./utils/git.nix
+      ./utils/kitty.nix
   ];
   programs.fish.enable = true;
   programs.home-manager.enable = true;
