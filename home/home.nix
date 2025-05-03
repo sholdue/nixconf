@@ -31,6 +31,4 @@
       ./utils/git.nix
       ./utils/kitty.nix
   ];
-  programs.fish.enable = true;
-  programs.home-manager.enable = true;
 }
