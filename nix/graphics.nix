@@ -10,16 +10,18 @@
     nvidiaSettings = true;
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-    prime = {
-      offload.enable = true;
-    };
   };
 
   hardware.nvidia.prime = {
-    amdgpuBusId = "PCI:5:0:0";  # пример
-    nvidiaBusId = "PCI:1:0:0";  # пример
+	offload = {
+		enable = true;
+		enableOffloadCmd = true;
+	};
+
+	amdgpuBusId = "PCI:5:0:0";
+	nvidiaBusId = "PCI:1:0:0";
   };
+
   services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
   hardware.graphics.enable = true;
 }

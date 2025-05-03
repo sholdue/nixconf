@@ -27,8 +27,11 @@
   networking.networkmanager.enable = true;
   ############################################
   # NIX SETTINGS
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  nix.extraOptions = ''
+  	experimental-features = nix-command flakes
+  	warn-dirty = false
+  '';
   programs.fish.enable = true;
   ############################################
   # TIME & LOCALE
@@ -70,6 +73,16 @@
     layout = "us,ru";
     variant = ",";
     options = "grp:alt_shift_toggle";
+  };
+  ############################################
+  # SOME PROGRAMS (BECAUSE HOME-MANAGER DOESNT SUPPORT INSTALL IT LOCALY) shit...
+  programs = {
+	steam = {
+  		enable = true;
+  		remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  		dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  		localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+	};
   };
   ############################################
   # AUDIO
