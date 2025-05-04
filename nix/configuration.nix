@@ -104,7 +104,6 @@
       emoji = [ "Noto Color Emoji" ];
     };
   };
-
   ############################################
   # AUDIO
   # hardware.pulseaudio.enable = true;

@@ -6,7 +6,6 @@
     homeDirectory = "/home/sholdue";
     stateVersion = "24.11";
 
-    
   file = {
     	".config/waybar/config.jsonc".source = ./waybar/config.jsonc;
         ".config/waybar/style.css".source = ./waybar/style.css;
@@ -33,7 +32,7 @@
       nixup = "nix flake update --flake /home/sholdue/nix";
       nixswitch = "sudo nixos-rebuild switch --flake /home/sholdue/nix#world";
       hms = "home-manager switch --flake /home/sholdue/nix/home#sholdue";
-      cleanup = "sudo nix-collect-garbage -d";
+      cleanup = "sudo nix-collect-garbage -d && sudo nix-env --delete-generations old && sudo nixos-rebuild boot";
       rm = "trash";
       rmdir = "trash";
     };
