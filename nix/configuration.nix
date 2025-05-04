@@ -107,12 +107,21 @@
 
   ############################################
   # AUDIO
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
 
-  systemd.services.pipewire.enable = false;
-  systemd.services.pipewire-pulse.enable = false;
-  systemd.services.pipewire-media-session.enable = false;
-  services.pipewire.enable = false;
+  # systemd.services.pipewire.enable = false;
+  # systemd.services.pipewire-pulse.enable = false;
+  # systemd.services.pipewire-media-session.enable = false;
+  # services.pipewire.enable = false;
+  security.rtkit.enable = true;
+	services.pipewire = {
+  	enable = true;
+  	alsa.enable = true;
+  	alsa.support32Bit = true;
+  	pulse.enable = true;
+  	# If you want to use JACK applications, uncomment this
+  	#jack.enable = true;
+  };
   ############################################
   # GRAPHICS/SWITCHING
   services.supergfxd.enable = true;
@@ -143,6 +152,7 @@
     enable = true;
     enableUserService = true;
   };
+  services.power-profiles-daemon.enable = true;
   ############################################
   # SYSTEM PACKAGES
   environment.systemPackages = with pkgs; [
@@ -151,6 +161,11 @@
     brightnessctl
     home-manager
     blueman
+    tlp
+    power-profiles-daemon
+    qt5.qtwayland
+    qt6.qtwayland
+    lxqt.lxqt-policykit
   ];
   ############################################
   # SYSTEM VERSION

@@ -6,6 +6,15 @@
     homeDirectory = "/home/sholdue";
     stateVersion = "24.11";
 
+    
+  file = {
+    	".config/waybar/config.jsonc".source = ./waybar/config.jsonc;
+        ".config/waybar/style.css".source = ./waybar/style.css;
+
+    	".config/hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
+    	".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
+  };
+
     packages = with pkgs; [
       neofetch
       htop
@@ -16,7 +25,9 @@
       trashy
       hyprpaper
       waybar
-    ];
+      hyprshot
+      mako
+   ];
 
     shellAliases = {
       nixup = "nix flake update --flake /home/sholdue/nix";
@@ -26,6 +37,12 @@
       rm = "trash";
       rmdir = "trash";
     };
+  };
+  
+  xdg.portal = {
+  	enable = true;
+  	extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  	config.common.default = "hyprland";
   };
 
   imports = [

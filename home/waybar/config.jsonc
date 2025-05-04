@@ -1,0 +1,80 @@
+{
+  "layer": "top",
+  "position": "top",
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": [],
+  "modules-right": [
+    "backlight",
+    "pulseaudio",
+    "microphone",
+    "bluetooth",
+    "network",
+    "temperature",
+    "battery",
+    "clock",
+    "power-profiles-daemon",
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{icon}"
+  },
+
+"power-profiles-daemon": {
+  "format": "{icon}",
+  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  "tooltip": true,
+  "format-icons": {
+    "default": "",
+    "performance": "",
+    "balanced": "",
+    "power-saver": ""
+  }
+},
+  "backlight": {
+    "device": "intel_backlight", // или другой, см. вывод `ls /sys/class/backlight/`
+    "format": "🌞 {percent}%"
+  },
+
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": "",
+    "on-click": "pavucontrol"
+  },
+
+  "microphone": {
+    "format": "🎙 {volume}%",
+    "format-muted": "🎙×",
+    "on-click": "pavucontrol"
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": " Off",
+    "format-connected": " {device_alias}",
+    "on-click": "blueman-manager"
+  },
+
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ifname}",
+    "format-disconnected": " Нет сети"
+  },
+
+  "temperature": {
+    "format": "🌡 {temperatureC}°C",
+    "critical-threshold": 80
+  },
+
+  "battery": {
+    "format": "🔋 {capacity}%",
+    "format-charging": "⚡ {capacity}%",
+    "format-plugged": "🔌 {capacity}%",
+    "format-alt": "{time} left"
+  },
+
+  "clock": {
+    "format": "📅 {:%Y-%m-%d %H:%M}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{:%H:%M:%S}</tt>"
+  }
+}
